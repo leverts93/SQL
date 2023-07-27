@@ -1,0 +1,22 @@
+CREATE TABLE clothing (id integer primary key, name text, dollar_price integer, color text, amount_stocked integer);
+
+INSERT INTO clothing VALUES
+(1, "t_shirt", 15, "blue", 20),
+(2, "shorts", 20, "black", 25),
+(3, "socks", 3, "white", 45),
+(4, "pants", 30, "grey", 30),
+(5, "hoodle", 45, "green", 50),
+(6, "tank_top", 10, "white", 35),
+(7, "undies", 5, "multi", 45),
+(8, "bras", 5, "multi", 45),
+(9, "slippers", 12, "green", 20),
+(10, "sweatshirt", 40, "purple", 55),
+(11, "necklace", 2, "gold", 75),
+(12, "ring", 2, "gold", 75),
+(13, "crocs", 25, "black", 20),
+(14, "ponytail_holders", 1, "white", 80),
+(15, "bracelet", 3, "multi", 75);
+
+SELECT * FROM clothing
+WHERE dollar_price <=30
+ORDER BY dollar_price desc;
