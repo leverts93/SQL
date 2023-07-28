@@ -1,0 +1,35 @@
+/* Create tables about the people and what they do here */
+
+CREATE TABLE Actors (id INTEGER PRIMARY KEY AUTOINCREMENT, "name" TEXT, age INTEGER, "movie" TEXT);
+
+INSERT INTO Actors("name", age, "movie") VALUES ("Jennifer Lawrence", 32, "The Hunger Games");
+INSERT INTO Actors("name", age, "movie") VALUES ("Josh Hutcherson", 30, "The Hunger Games");
+INSERT INTO Actors("name", age, "movie") VALUES ("Stanley Tucci", 62, "The Hunger Games");
+INSERT INTO Actors("name", age, "movie") VALUES ("Emily Blunt", 40, "A Quiet Place");
+INSERT INTO Actors("name", age, "movie") VALUES ("John Krasinski", 43, "A Quiet Place");
+INSERT INTO Actors("name", age, "movie") VALUES ("Jenna Fischer", 49, "Blades of Glory");
+INSERT INTO Actors("name", age, "movie") VALUES ("Steve Carell", 60, "40 Year Old Virgin");
+INSERT INTO Actors("name", age, "movie") VALUES ("Nancy Walls", 57, "40 Year Old Virgin");
+
+CREATE TABLE Status (id INTEGER PRIMARY KEY AUTOINCREMENT, "actor_id" TEXT, "spouse" TEXT);
+
+INSERT INTO Status("actor_id", "spouse") VALUES ("Jennifer Lawrence", "Cooke Maroney");
+INSERT INTO Status("actor_id", "spouse") VALUES ("Stanley Tucci", "Felicity Blunt");
+INSERT INTO Status("actor_id", "spouse") VALUES ("Emily Blunt", "John Krasinski");
+INSERT INTO Status("actor_id", "spouse") VALUES ("John Krasinski", "Emily Blunt");
+INSERT INTO Status("actor_id", "spouse") VALUES ("Jenna Fischer", "Lee Kirk");
+INSERT INTO Status("actor_id", "spouse") VALUES ("Steve Carell", "Nancy Walls");
+INSERT INTO Status("actor_id", "spouse") VALUES ("Nancy Walls", "Steve Carell");
+
+/*All actors in the movie The Hunger Games*/
+
+SELECT *
+FROM Actors
+WHERE movie = "The Hunger Games";
+
+/*Actors that are married to each other*/
+
+SELECT Actors.name, Status.actor_id
+FROM Actors
+JOIN Status
+ON Actors.name=Status.spouse;
