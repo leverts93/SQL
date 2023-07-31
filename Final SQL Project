@@ -1,0 +1,42 @@
+/*#1 Show customers who are not in the US.*/
+SELECT FirstName, LastName, CustomerId, Country
+FROM chinook.customers
+WHERE Country <> 'USA';
+
+/*#2 Show only the Customers from Brazil.*/
+SELECT *
+FROM chinook.customers
+WHERE Country = 'Brazil';
+
+/*#3 Find the invoices of customers who are from Brazil.*/
+SELECT c.FirstName, c.LastName, i.InvoiceID, i.InvoiceDate, i.BillingCountry
+FROM chinook.invoices AS i
+LEFT JOIN chinook.customers AS c
+ON i.CustomerID = c.CustomerID
+WHERE i.BillingCountry = 'Brazil';
+
+/*#4 Show the Employees who are Sales Agents.*/
+SELECT *
+FROM chinook.employees
+WHERE title = "Sales Support Agent";
+
+/*#5 Find a unique/distinct list of billing countries from the Invoice Table.*/
+SELECT DISTINCT BillingCountry
+FROM chinook.invoices;
+
+/*#6 How many Invoices were there in 2009?*/
+
+SELECT COUNT(*)
+FROM chinook.invoices
+WHERE InvoiceDate BETWEEN '2009-01-01' AND '2009-12-31';
+
+/*#7 WHat are the total sales for 2012?*/
+SELECT SUM(Total)
+FROM chinook.invoices
+WHERE InvoiceDate Between '2012-01-01' AND '2012-12-31';
+
+/*#8 Show the purchased track name with each invoice line ID.*/
+SELECT t.name,i.invoiceLineID
+FROM chinook.invoice_items AS i
+JOIN chinook.tracks AS t
+ON i.TrackID = t.TrackID;
